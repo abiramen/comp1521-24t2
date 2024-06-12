@@ -2,10 +2,15 @@
 #define N_ELEMENTS 5
 
 int main(void) {
-    char array[N_ELEMENTS] = {'h', 'e', 'l', 'l', 'o'};
+    int array[N_ELEMENTS] = {3, 1, 4, 1, 5};
+    // array = &array[0]
+    // &array[i] = array + 4 * i
+    // array[i] = *(array + 4 * i)
+    // &array[i] = array + i * sizeof(element)
 
     for (int i = 0; i < N_ELEMENTS; i++) {
-        putchar(array[i]);
+        printf("%p ", &array[i]);
+        printf("%d", array[i]);
         putchar('\n');
     }
 

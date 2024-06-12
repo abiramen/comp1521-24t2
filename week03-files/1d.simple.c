@@ -4,10 +4,17 @@
 int main(void) {
     char array[N_ELEMENTS] = {'h', 'e', 'l', 'l', 'o'};
 
-    for (int i = 0; i < N_ELEMENTS; i++) {
-        putchar(array[i]);
-        putchar('\n');
-    }
+loop__init:
+    int i = 0;
+loop__cond:
+    if (i >= N_ELEMENTS) goto loop__end;
+loop__body:
+    putchar(array[i]);                      // &array[i] = array + i
+    putchar('\n');
+loop__step:
+    i++;
+    goto loop__cond;
+loop__end:
 
     return 0;
 }
