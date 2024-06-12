@@ -19,10 +19,15 @@ loop__body:
 
 	li	$v0, 1			# syscall 1: print_int
 	# TODO: grab value from array
-	la	$t1, array		# (array
-	mul	$t2, $t0, 4		#  + 4 *
-	add	$t1, $t1, $t2		#  i)
-	lw	$a0, ($t1)		# 
+	# la	$t1, array		# (array
+	# mul	$t2, $t0, 4		#  + 4 *
+	# add	$t1, $t1, $t2		#  i)
+	# lw	$a0, ($t1)		# 
+
+	mul	$t2, $t0, 4		# (4 * i)
+	sw	$a0, array($t2)		# + array
+
+
 	syscall				# putchar(array[i]);
 
 	li	$v0, 11			# syscall 11: print_char
