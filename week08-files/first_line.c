@@ -10,7 +10,24 @@
 
 int main(int argc, char *argv[]) {
 
-    // TODO: complete this function
+  if (argc != 2) {
+    fprintf(stderr, "usage: %s <filename>\n", argv[0]);
+    return 1;
+  }
 
-    return 0;
+  FILE *stream = fopen(argv[1], "r");
+
+  if (stream == NULL) {
+    perror(argv[1]);
+    return 1;
+  }
+
+  int c;
+  while ((c = fgetc(stream)) != EOF && c != '\n') {
+    putchar(c);
+  }
+
+  putchar('\n');
+  fclose(stream);
+  return 0;
 }
